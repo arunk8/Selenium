@@ -32,13 +32,16 @@ public class TestNGBasics {
     @Test(priority = 1)
     public void testMethod1() {
         System.out.println("Test Method 1");
-        Assert.assertEquals(2 + 2, 4);
+        String expectedValue = "Employee Name";
+        String actualValue = "skluivbnm";
+        Assert.assertEquals(actualValue, expectedValue);
     }
 
     // Test method 2 with dependencies on testMethod1
     @Test(priority = 2, dependsOnMethods = "testMethod1")
     public void testMethod2() {
         System.out.println("Test Method 2");
+        
     }
 
     // This method will run after each test method
