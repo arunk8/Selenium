@@ -14,9 +14,9 @@
         <!-- Test classes to be included in this test -->
         <classes>
             <class name="Selenium.Selenium.TestNGBasics" />
+            <class name="Selenium.Selenium.TestNGBasics2" />
         </classes>
         
     </test>
-
 
 </suite>
