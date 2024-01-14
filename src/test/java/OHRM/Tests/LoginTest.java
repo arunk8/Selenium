@@ -3,8 +3,9 @@ package OHRM.Tests;
 import org.testng.annotations.Test;
 
 import OHRM.PageObjects.LoginPage;
+import OHRM.utilities.WebActions;
 
-public class TC01LoginTest extends BaseClass{
+public class LoginTest extends BaseClass{
 
 	@Test
 	public void loginTest() {
@@ -13,6 +14,7 @@ public class TC01LoginTest extends BaseClass{
 
         // Example usage
         loginPage.login("admin", "admin123");
+        WebActions.waitForPageToLoad(driver);	
 		captureScreenshot("loginTest");
 		
 		

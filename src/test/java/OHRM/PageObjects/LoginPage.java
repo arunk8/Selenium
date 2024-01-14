@@ -14,7 +14,7 @@ public class LoginPage {
     // Locators
     private final By usernameInput = By.name("username");
     private final By passwordInput = By.name("password");
-    private final By loginButton = By.id("btnLogin");
+    private final By loginButton = By.xpath("//*[text()=' Login ']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -46,6 +46,8 @@ public class LoginPage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
+        webActions.waitForSeconds(5);
+
     }
 
     public String getErrorMessage() {
