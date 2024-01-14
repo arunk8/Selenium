@@ -3,17 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Selenium.Selenium.TestNGBasics">
+      <class name="OHRM.Tests.TC01LoginTest">
         <methods>
-          <include name="beforeClass"/>
-          <include name="testMethod1"/>
-          <include name="beforeSuite"/>
-          <include name="afterSuite"/>
-          <include name="beforeMethod"/>
-          <include name="afterMethod"/>
-          <include name="afterClass"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="loginTest"/>
         </methods>
-      </class> <!-- Selenium.Selenium.TestNGBasics -->
+      </class> <!-- OHRM.Tests.TC01LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
