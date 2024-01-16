@@ -18,27 +18,35 @@ public class WebActions {
 
     public WebActions(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust the timeout as needed
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
     }
 
     public void click(By locator) {
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        WebElement element = waitUntilClickable(locator);
         element.click();
     }
 
     public void sendKeys(By locator, String text) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        WebElement element = waitUntilVisible(locator);
         element.sendKeys(text);
     }
 
     public void waitForVisibilityOfElement(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        waitUntilVisible(locator);
     }
 
     public void waitForElementToBeClickable(By locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        waitUntilClickable(locator);
     }
-    
+
+    private WebElement waitUntilVisible(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    private WebElement waitUntilClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
     public static void waitForPageToLoad(WebDriver driver) {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(new ExpectedCondition<Boolean>() {
             @Override

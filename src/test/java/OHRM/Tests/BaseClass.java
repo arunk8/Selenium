@@ -16,9 +16,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+
+import OHRM.utilities.AssertionUtils;
+import OHRM.utilities.ExtentReportUtils;
+
 
 public class BaseClass {
     public WebDriver driver;
+    public ExtentReports extent;
+    public ExtentTest extentTest;
+    public ExtentReportUtils extentReportUtils;
+    public AssertionUtils assertionUtils;
 
     public String baseUrl = "https://opensource-demo.orangehrmlive.com/";
     
@@ -58,6 +68,7 @@ public class BaseClass {
             System.out.println("Screenshot captured: " + destPath.toString());
         } catch (IOException e) {
             System.err.println("Failed to capture screenshot: " + e.getMessage());
+            
         }
     }
 }

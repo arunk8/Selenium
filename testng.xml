@@ -1,18 +1,17 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
+	
 <suite name="MyTestSuite">
 
     <!-- Configuring parameters for the entire suite -->
     <parameter name="browser" value="chrome" />
+	
+	<listeners>
+		<listener class-name="OHRM.utilities.ExtentReporterNG" />
+	</listeners>
 
-    <!-- Setting up test parameters -->
     <test name="MyTest">
-        
-        <!-- Configuring parameters specific to this test -->
-        <parameter name="environment" value="qa" />
-        
-        <!-- Test classes to be included in this test -->
-        <classes>
+                <classes>
             <class name="Selenium.Selenium.TestNGBasics" />
             <class name="Selenium.Selenium.TestNGBasics2" />
         </classes>
