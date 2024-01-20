@@ -15,10 +15,11 @@ public class AssertionUtils {
         try {
             Assert.assertEquals(actual, expected, message);
             extentReportUtils.logPass("Assertion Passed: " + message);
-        } catch (AssertionError e) {
+        } catch (Exception | AssertionError  e) {
             extentReportUtils.logFailWithScreenshot("Assertion Failed: " + message);
             throw e;
         }
+        
     }
 
     // Assert that a condition is true

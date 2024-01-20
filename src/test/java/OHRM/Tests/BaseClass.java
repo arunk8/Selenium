@@ -29,15 +29,16 @@ public class BaseClass {
     public ExtentTest extentTest;
     public ExtentReportUtils extentReportUtils;
     public AssertionUtils assertionUtils;
-
+    public String userName ="Admin";
+    public String password = "admin123";
     public String baseUrl = "https://opensource-demo.orangehrmlive.com/";
     
     @BeforeMethod
     public void setUp() {
-//        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
         driver = new ChromeDriver();	
         driver.manage().window().maximize();
-//        driver.get(baseUrl);
+        extentReportUtils = new ExtentReportUtils(driver);
+        assertionUtils =  new AssertionUtils(extentReportUtils);
     }
 
     @AfterMethod
@@ -46,6 +47,16 @@ public class BaseClass {
             driver.quit();
         }
     }
+    
+//    public void setExtentTest() {
+//    	ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extent-report.html");
+//        ExtentReports extent = new ExtentReports();
+//        extent.attachReporter(htmlReporter);
+//
+//        // Create ExtentTest
+//        ExtentTest extentTest = extent.createTest("Test Name", "Test Description");
+//    }
+    
     
     public void captureScreenshot(String testName) {
         try {

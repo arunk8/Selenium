@@ -18,9 +18,9 @@ public class WebActions {
 
     public WebActions(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20)); 	
     }
-
+//performable actions
     public void click(By locator) {
         WebElement element = waitUntilClickable(locator);
         element.click();
@@ -31,6 +31,22 @@ public class WebActions {
         element.sendKeys(text);
     }
 
+    public String getText(By locator) {
+        WebElement element = waitUntilVisible(locator);
+        return element.getText();
+    }
+    public String getAttributeValue(By locator, String attributeName) {
+        WebElement element = waitUntilVisible(locator);
+        return element.getAttribute(attributeName);
+    }
+
+    public String getCssValue(By locator, String propertyName) {
+        WebElement element = waitUntilVisible(locator);
+        return element.getCssValue(propertyName);
+    }
+
+    
+//checks/waits
     public void waitForVisibilityOfElement(By locator) {
         waitUntilVisible(locator);
     }
@@ -48,7 +64,7 @@ public class WebActions {
     }
 
     public static void waitForPageToLoad(WebDriver driver) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(new ExpectedCondition<Boolean>() {
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver webDriver) {
                 return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete");

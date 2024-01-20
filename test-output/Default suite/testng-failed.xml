@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="OHRM.Tests.TC01LoginTest">
+      <class name="OHRM.Tests.AdminTest">
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="loginTest"/>
+          <include name="adminTest"/>
         </methods>
-      </class> <!-- OHRM.Tests.TC01LoginTest -->
+      </class> <!-- OHRM.Tests.AdminTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
