@@ -7,13 +7,14 @@
     <parameter name="browser" value="chrome" />
 	
 	<listeners>
-		<listener class-name="OHRM.utilities.ExtentReporterNG" />
+		<listener class-name="OHRM.utilities.Reporting" />
 	</listeners>
 
     <test name="MyTest">
-                <classes>
+       <classes>
             <!--<class name="Selenium.Selenium.TestNGBasics" />-->
-            <class name="Selenium.Selenium.TestNGBasics2" />
+            <!--<class name="OHRM.Tests.LoginTest" />-->
+            <class name="OHRM.Tests.AdminTest" />
         </classes>
         
         

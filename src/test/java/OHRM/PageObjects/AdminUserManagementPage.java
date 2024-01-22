@@ -5,9 +5,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import OHRM.utilities.AssertionUtils;
-import OHRM.utilities.ExtentReportUtils;
 
+import OHRM.utilities.AssertionUtils;
 import OHRM.utilities.WebActions;
 
 public class AdminUserManagementPage {
@@ -15,21 +14,19 @@ public class AdminUserManagementPage {
     private final WebDriver driver;
     private final WebActions webActions;
     public final AssertionUtils assertion;
-    public final ExtentReportUtils extReports;
 
    
-    public AdminUserManagementPage(WebDriver driver,ExtentReportUtils extentReportUtils, AssertionUtils assertionUtils) {
+    public AdminUserManagementPage(WebDriver driver) {
         this.driver = driver;
         this.webActions = new WebActions(driver);
-		this.extReports = extentReportUtils;
-        this.assertion = assertionUtils;
+        this.assertion = new AssertionUtils();
     }
 
     
     //login page objexts
-    private final By usernameInput = By.name("username");
-    private final By passwordInput = By.name("password");
-    private final By loginButton = By.xpath("//*[text()=' Login ']");
+    By usernameInput = By.name("username");
+    By passwordInput = By.name("password");
+    By loginButton = By.xpath("//*[text()=' Login ']");
     
     //page objects
     String optionXpath = "//span[text()='dynamicValue']";
@@ -54,9 +51,8 @@ public class AdminUserManagementPage {
     public void printAllMenuOptions() {
     	List<WebElement> options= driver.findElements(menuAllOptions);
     	for(int i=0;i<options.size();i++) {
-    		System.out.println("Option "+(i+1)+" is "+options.get(i));
+    		System.out.println("Option "+(i+1)+" is "+options.get(i).getText());
     	}
-    	
     }
     
     
@@ -80,7 +76,6 @@ public class AdminUserManagementPage {
     
     
     public void searchUser(String userName) {
-    	
     	webActions.sendKeys(searchUnameInput,userName);
     	webActions.click(seachButton);
     	String recordsFound = webActions.getText(recordsText);
@@ -88,9 +83,7 @@ public class AdminUserManagementPage {
     	
     	int actualCount =  Integer.parseInt(recordsFound.substring(1, 2)); //typecast string to int
 //    	String actualName =  String.valueOf(1233232); //typecast int to string
-    	assertion.assertEquals(actualCount, 1, recordsFound);
-    	
-    	
+    	assertion.assertEquals(actualCount, 1, recordsFound);    	
     }
     
     

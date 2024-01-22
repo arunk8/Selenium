@@ -10,7 +10,7 @@ public class AdminTest extends BaseClass{
 
 	@Test
 	public void adminTest() {
-		AdminUserManagementPage adminump = new AdminUserManagementPage(driver, extentReportUtils, assertionUtils);
+		AdminUserManagementPage adminump = new AdminUserManagementPage(driver);
 		
 		adminump.login(userName,password);
 		System.out.println("Logged in to application");
@@ -20,6 +20,8 @@ public class AdminTest extends BaseClass{
 		
 		adminump.printAllMenuOptions();
 		adminump.navigateToAdminPage();
+		captureScreenshot("adminPage");
 		adminump.searchUser("admin");
+		
 	}
 }

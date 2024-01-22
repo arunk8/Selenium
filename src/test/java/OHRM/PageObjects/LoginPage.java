@@ -2,10 +2,8 @@ package OHRM.PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import OHRM.utilities.AssertionUtils;
-import OHRM.utilities.ExtentReportUtils;
 
+import OHRM.utilities.AssertionUtils;
 import OHRM.utilities.WebActions;
 
 public class LoginPage {
@@ -13,24 +11,23 @@ public class LoginPage {
     private final WebDriver driver;
     private final WebActions webActions;
     public final AssertionUtils assertion;
-    public final ExtentReportUtils extReports;
 
-    // Locators
-    private final By usernameInput = By.name("username");
-    private final By passwordInput = By.name("password");
-    private final By loginButton = By.xpath("//*[text()=' Login ']");
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        this.webActions = new WebActions(driver);
+        this.assertion = new AssertionUtils();
+    }
+
+    // Page Locators
+    By usernameInput = By.name("username");
+    By passwordInput = By.name("password");
+    By loginButton = By.xpath("//*[text()=' Login ']");
     
     //validation xpaths
     By brandLogo = By.xpath("//img[contains(@src,'orangehrm')]");
     By dashboardText = By.xpath("//h6[text()='Dashboard']");
 
-    public LoginPage(WebDriver driver,ExtentReportUtils extentReportUtils, AssertionUtils assertionUtils) {
-        this.driver = driver;
-        this.webActions = new WebActions(driver);
-		this.extReports = extentReportUtils;
-        this.assertion = assertionUtils;
-    }
-
+   
     public void navigateToLoginPage() {
         System.out.println("Navigating to the login page: https://opensource-demo.orangehrmlive.com/");
         driver.get("https://opensource-demo.orangehrmlive.com/");
@@ -58,15 +55,6 @@ public class LoginPage {
         enterPassword(password);
         clickLoginButton();
         webActions.waitForSeconds(5);
-    }
-
-    public String getErrorMessage() {
-
-        By errorMessageLocator = By.id("spanMessage");
-        WebElement errorMessageElement = driver.findElement(errorMessageLocator);
-        String errorMessage = errorMessageElement.getText();
-        System.out.println("Error message displayed: " + errorMessage);
-        return errorMessage;
     }
     
     

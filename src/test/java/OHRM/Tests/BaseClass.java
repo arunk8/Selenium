@@ -16,18 +16,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 
 import OHRM.utilities.AssertionUtils;
-import OHRM.utilities.ExtentReportUtils;
 
 
 public class BaseClass {
     public WebDriver driver;
-    public ExtentReports extent;
-    public ExtentTest extentTest;
-    public ExtentReportUtils extentReportUtils;
     public AssertionUtils assertionUtils;
     public String userName ="Admin";
     public String password = "admin123";
@@ -37,8 +31,6 @@ public class BaseClass {
     public void setUp() {
         driver = new ChromeDriver();	
         driver.manage().window().maximize();
-        extentReportUtils = new ExtentReportUtils(driver);
-        assertionUtils =  new AssertionUtils(extentReportUtils);
     }
 
     @AfterMethod
@@ -47,15 +39,6 @@ public class BaseClass {
             driver.quit();
         }
     }
-    
-//    public void setExtentTest() {
-//    	ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extent-report.html");
-//        ExtentReports extent = new ExtentReports();
-//        extent.attachReporter(htmlReporter);
-//
-//        // Create ExtentTest
-//        ExtentTest extentTest = extent.createTest("Test Name", "Test Description");
-//    }
     
     
     public void captureScreenshot(String testName) {
