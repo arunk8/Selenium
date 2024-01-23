@@ -22,6 +22,6 @@ public class AdminTest extends BaseClass{
 		adminump.navigateToAdminPage();
 		captureScreenshot("adminPage");
 		adminump.searchUser("admin");
-		
+		System.out.println("Admin test completed");
 	}
 }
