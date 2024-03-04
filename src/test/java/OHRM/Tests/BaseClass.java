@@ -48,7 +48,6 @@ public class BaseClass {
 
             // Capture screenshot as File
             File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-
             // Get the current timestamp
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
             String timestamp = dateFormat.format(new Date());
